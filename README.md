@@ -68,7 +68,7 @@ Git:
     git@github.com:DiegoZaraza/MallCZ.git
     cd MallCZ
     
-Or simply [download a zip](https://github.com/DiegoZaraza/BlankFactor/archive/refs/heads/main.zip) file
+Or simply [download a zip](https://github.com/DiegoZaraza/MallCZ/archive/refs/heads/main.zip) file
 
 ## Execution
 For execute the project you must use:
