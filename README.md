@@ -61,12 +61,12 @@ Total time: 6.317 secs
 Git:
 
     Whit SSH
-    git clone git@github.com:DiegoZaraza/BlankFactor.git
-    cd BlankFactor
+    git@github.com:DiegoZaraza/MallCZ.git
+    cd MallCZ
     
     With HTTPS
-    git clone git@github.com:DiegoZaraza/BlankFactor.git
-    cd BlankFactor
+    git@github.com:DiegoZaraza/MallCZ.git
+    cd MallCZ
     
 Or simply [download a zip](https://github.com/DiegoZaraza/BlankFactor/archive/refs/heads/main.zip) file
 
