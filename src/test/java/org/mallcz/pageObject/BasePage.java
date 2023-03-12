@@ -2,6 +2,7 @@ package org.mallcz.pageObject;
 
 import org.apache.log4j.Logger;
 import org.mallcz.utilities.PropertiesRead;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,12 +25,12 @@ public class BasePage {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
     }
 
-    public void waitForVisibility(WebElement e) {
+    public static void waitForVisibility(WebElement e) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(e));
     }
 
-    public void click(WebElement e, String msg) {
+    public static void click(WebElement e, String msg) {
         log.info(msg);
         waitForVisibility(e);
         e.click();
@@ -63,5 +64,10 @@ public class BasePage {
 
     public boolean isDisplayed(WebElement e, String msg) {
         return e.isDisplayed();
+    }
+
+    public void  scrollDown() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
     }
 }
