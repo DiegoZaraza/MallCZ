@@ -14,6 +14,8 @@ import org.mallcz.utilities.PropertiesRead;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class StepDefinitions {
     private static final String PAGE = PropertiesRead.readFromFrameworkConfig("URL");
     private WebDriver webDriver;
@@ -24,14 +26,16 @@ public class StepDefinitions {
     public void setup() {
         WebDriverManager.chromedriver().setup();
         webDriver = WebDriverManager.chromedriver().create();
+//        WebDriverManager.firefoxdriver().setup();
+//        webDriver = WebDriverManager.firefoxdriver().create();
         indexPage = new IndexPage(webDriver);
         softAssertions = new SoftAssertions();
         webDriver.manage().window().maximize();
-        BasePage.setImplicitlyWait();
     }
     @Given("Navigate to mall.cz")
     public void navigateToMallCz() {
         BasePage.setImplicitlyWait();
+        webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         webDriver.get(PAGE);
         IndexPage.clickCookies();
     }
@@ -48,7 +52,7 @@ public class StepDefinitions {
     public void end() {
         softAssertions.assertAll();
         if (webDriver != null) {
-   //         webDriver.quit();
+            webDriver.quit();
         }
     }
 }

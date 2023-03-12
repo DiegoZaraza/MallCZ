@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Objects;
 
 public class BasePage {
     static final Logger log = Logger.getLogger(BasePage.class);
@@ -66,8 +67,21 @@ public class BasePage {
         return e.isDisplayed();
     }
 
+    public static void refreshPage() {
+        driver.navigate().refresh();
+    }
+
     public void  scrollDown() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+        Object last_height = js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+
+        while(true){
+            js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+            Object new_height = js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+            if(last_height == new_height)
+                break;
+
+            last_height = new_height;
+        }
     }
 }
